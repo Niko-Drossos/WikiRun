@@ -19,9 +19,13 @@ class Game {
     const wikiWindow = window.open("https://en.wikipedia.org/wiki/Special:Random")
 
     wikiWindow.addEventListener('load', function() {
-      // The Wikipedia page has finished loading, start the timer
-      this.time = new Date()
-      console.log(`Timer started at ${time}`)
+      /* -------- The Wikipedia page has finished loading, start the timer -------- */
+      this.time = JSON.parse(localStorage.getItem('start-time')) || new Date().getTime()
+
+      if (!localStorage.getItem('start-time')) {
+        localStorage.setItem('start-time', this.time)
+      }
+
       // Perform any other actions you need to do after the page loads
       wikiWindow.removeEventListener('load', this)
     })
@@ -33,6 +37,7 @@ class Game {
     console.log(`Timer ended in: ${new Date() - this.time / 1000} seconds.`)
     console.log(`Links clicked: ${history.length}`)
     localStorage.removeItem('links')
+    localStorage.removeItem('start-time')
     return (new Date() - this.time / 1000).toFixed(2)
   }
 
@@ -45,7 +50,7 @@ class Game {
 
 const newGame = new Game()
 
-// newGame.start()
+newGame.start()
 // newGame.addLink()
 
 /* ------------------------ Add link event listeners ------------------------ */
