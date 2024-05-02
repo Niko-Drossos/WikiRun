@@ -9,7 +9,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.wikipedia.org/*"],
-      "js": ["wikiRun.js"]
+      "js": ["wikiRun.js", "popup.js"]
     }
   ],
   "action": {
