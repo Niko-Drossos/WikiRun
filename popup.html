@@ -5,13 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta content="script-src 'self' 'unsafe-inline'; object-src 'self'" http-equiv="Content-Security-Policy"/>
 	<link rel="stylesheet" href="popup.css" />
+	<script defer src="popup.js" type="javascript"></script>
 	<title>Wikipedia Speedrun</title>
 </head>
 <body>
-	<div class="popup-content">
+	<div id="popup-content" class="popup-content">
 		<h1>Wikipedia Speedrun!</h1>
-		<button onclick="imClicked()">CLICK!</button>
+		<button id="clickMe">CLICK!</button>
 	</div>
-	<script src="popup.js"></script>
 </body>
 </html>

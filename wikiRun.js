@@ -15,6 +15,8 @@ class Game {
     this.startTime = sessionStorage.getItem('start-time') || null
     // TODO: Maybe make this a set to prevent duplicates
     this.links = JSON.parse(sessionStorage.getItem('links')) || []
+    this.startPage = sessionStorage.getItem('start-page')
+    this.endPage = sessionStorage.getItem('end-page')
   }
 
   start() {
@@ -89,6 +91,8 @@ class Game {
   }
 }
 
+/* ----------------------------- Start the game ----------------------------- */
+
 const newGame = new Game()
 
 function startGame() {
@@ -105,7 +109,7 @@ for (let i = 0; i < anchorTags.length; i++) {
     event.preventDefault()
 
     // Don't let the users click on external links
-    if (anchorTags[i].classList.contains("external")) {
+    if (event.target.classList.contains("external")) {
       alert("You can't click on external links!")
       return
     }
